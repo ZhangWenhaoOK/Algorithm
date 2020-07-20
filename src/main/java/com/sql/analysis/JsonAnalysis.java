@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * 单利对象，解析json
+ * 单例对象，解析json
  */
 public class JsonAnalysis {
 

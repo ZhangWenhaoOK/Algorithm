@@ -4,16 +4,16 @@ import com.google.common.hash.BloomFilter;
 import com.google.common.hash.Funnel;
 import com.google.common.hash.Funnels;
 
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 /**
  * 布隆过滤器
  */
 public class BronFilter {
-    private static int size = 1000000;//预计要插入多少数据
-    private static double fpp = 0.00001;//期望的误判率
-    private static Funnel<CharSequence> charSequenceFunnel = Funnels.stringFunnel(Charset.forName("utf-8"));
-    private static BloomFilter<String> bloomFilter = BloomFilter.create(charSequenceFunnel, size, fpp);
+    private static final int size = 1000000;//预计要插入多少数据
+    private static final double fpp = 0.00001;//期望的误判率
+    private static final Funnel<CharSequence> charSequenceFunnel = Funnels.stringFunnel(StandardCharsets.UTF_8);
+    private static final BloomFilter<String> bloomFilter = BloomFilter.create(charSequenceFunnel, size, fpp);
 
     public static void main(String[] args) {
 

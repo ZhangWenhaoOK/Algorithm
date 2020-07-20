@@ -51,7 +51,7 @@ public class CalcCondition implements Condition {
             // 如果已经计算过
             return calcResult;
         }
-        // 不存在的计算类型
+        // 不存在的计算类型  不支持计算类型
         if (type == null) {
             isCalc = true;
             return calcResult;
@@ -59,15 +59,18 @@ public class CalcCondition implements Condition {
         // key恒为String  value "123"  123
         key = parser.getValue(key);
         boolean isStr = false;
+        // key或者value为null，则计算为false
         if (key == null || value == null) {
             isCalc = true;
             return calcResult;
         }
+        // value为字符串类型
         if ('\"' == value.charAt(0) && '\"' == value.charAt(value.length() - 1)) {
             isStr = true;
             value = value.substring(1, value.length() - 1);
         }
         switch (type) {
+            // 小于
             case less:
                 try {
                     // value 被双引号包裹
@@ -137,7 +140,7 @@ public class CalcCondition implements Condition {
 
     }
 
-    public enum Type {
+    private enum Type {
         less,
         equal,
         greater,

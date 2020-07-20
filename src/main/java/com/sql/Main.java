@@ -13,14 +13,15 @@ import java.util.Scanner;
  * a = 2 and d like "he%" or a = 1    true
  * 优 a = 2 or b.c < 3  true
  * 支持  a=2  a= 2  a = 2   字符串必须加双引号  否则为数字或者在json中取值
+ *
  * */
 public class Main {
 
     public static void main(String[] args) {
-        String sql1 = "a = \"somethine\"";
+        long start = System.currentTimeMillis();
         String sql2 = "a = 2 and d like \"he%\"";
         String sql3 = "a = 2 or b.c < 3";
-        String sql4 = "d like \"hell%8\"";
+        String sql4 = "        d like \"he%lo\"";
         String sql5 = "   ";
         Scanner scanner = new Scanner(System.in);
 //        String sql = scanner.nextLine();
@@ -38,5 +39,7 @@ public class Main {
                 System.out.println(apply);
             }
         }
+        long end = System.currentTimeMillis();
+        System.out.println(end- start);
     }
 }
